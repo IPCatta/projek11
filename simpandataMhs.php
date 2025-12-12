@@ -8,7 +8,8 @@ function bersih($data) {
 $xnim            = bersih($_POST['nim']?? '');
 $xnama           = bersih($_POST['nama']?? '');
 $xtempatlahir    = bersih($_POST['tempat_lahir']?? '');
-$xtgllahir       = date("Y-m-d", strtotime($xtgllahir));
+$xtanggalLahir   = bersih($_post['tanggal_Lahir']??'');
+$xtanggalLahir   = date("Y-m-d", strtotime($xtanggalLahir));
 $xjmlsaudara     = bersih($_POST['jmlsaudara']?? '');
 $xalamat         = bersih($_POST['alamat']?? '');
 $xkota           = bersih($_POST['kota']?? '');
@@ -23,14 +24,14 @@ if(empty($xraw_password) || strlen($xraw_password) <10) {
 }
 
 $hashed_password = password_hash($xraw_password, PASSWORD_BCRYPT);
-$sql1 = "INSERT INTO data_mhs (nim, nama, tempat_lahir, tgllahir, jmlsaudara, alamat, kota, jenisKelamin
+$sql1 = "INSERT INTO data_mhs (nim, nama, tempat_lahir, tanggalLahir, jmlsaudara, alamat, kota, jenisKelamin
                      , statusKeluarga, hobi, email, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt1 = $koneksi->prepare($sql1);
-$stmt1->bind_param("ssssssssssss", $xnim, $xnama, $xtempatlahir, $xtgllahir, $xjmlsaudara, $xalamat, $xkota, $xjk 
+$stmt1->bind_param("ssssssssssss", $xnim, $xnama, $xtempatlahir, $xtanggalLahir, $xjmlsaudara, $xalamat, $xkota, $xjk 
                             ,$xstatusKeluarga, $xhobi, $xemail, $hashed_password);
 if($stmt1->execute()) {
     echo "Data berhasil disimpan! <br>";
-    echo "<a href=tampilDataMhs.php>Lihat Data</a>";
+    echo "<a href='tampilDataMhs.php'>Lihat Data</a>";
 } else {
     echo "error: " . mysqli_error($koneksi);
 }

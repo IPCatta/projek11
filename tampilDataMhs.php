@@ -1,6 +1,6 @@
 <?php
 include 'koneksi.php';
-$data = mysqli_query($koneksi, "SELECT * FROM data_mhs ORDER BY nim DESC");
+$data = mysqli_query($koneksi, "SELECT * FROM mhs ORDER BY nim DESC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM data_mhs ORDER BY nim DESC");
 </head>
 <body>
     <h2>Daftar Data Mahasiswa</h2>
-    <a href="TambahDataMhs.php">Tambah Data Baru</a>
+    <a href="tambahDataMhs.php">Tambah Data Baru</a>
     <br><br>
     <table border="1" cellpadding="8">
         <tr>
@@ -29,13 +29,13 @@ $data = mysqli_query($koneksi, "SELECT * FROM data_mhs ORDER BY nim DESC");
             <th>Pass</th>
         </tr>
 
-        <?php while ($row = mysqli_fetch_assoc($Data)) : ?>
+        <?php while ($row = mysqli_fetch_assoc($data)) : ?>
             <tr>
                 <td><?=$row['id'] ?></td>
                 <td><?=$row['nim'] ?></td>
                 <td><?=$row['nama'] ?></td>
                 <td><?=$row['tempatlahir'] ?></td>
-                <td><?=$row['tanggallahir'] ?></td>
+                <td><?=$row['tanggalLahir'] ?></td>
                 <td><?=$row['jmlSaudara'] ?></td>
                 <td><?=$row['alamat'] ?></td>
                 <td><?=$row['Kota'] ?></td>

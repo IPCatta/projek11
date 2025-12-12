@@ -6,11 +6,11 @@
 </head>
 <body>
     <h2>Tambah Data Mahasiswa</h2>
-    <form action="prosesTambah.php" method="post">
+    <form action="simpanDataMhs.php" method="post">
         NIM : <input type="text" name="nim" required><br>
         Nama : <input type="text" name="nama" required><br>
         Tempat Lahir : <input type="text" name="tempat_lahir" required><br>
-        Tanggal Lahir : <input type="date" name="tanggal_lahir" required><br>
+        Tanggal Lahir : <input type="date" name="tanggalLahir" required><br>
         Jumlah Saudara : <input type="number" name="jumlah_saudara" required><br>
         Alamat :<br>
         <textarea rows="5" cols="50" name="alamat"></textarea><br>
@@ -37,7 +37,7 @@
         <input type="checkbox" name="hobi[]" value="Traveling">Traveling
         <br><br>
         Email : <input type="email" name="email" required><br><br>
-        <input type="Password" name="Password" required
+        <input type="Password" name="Password" required>
         <input type="submit" value="Simpan"> 
     </form>
 </body>
