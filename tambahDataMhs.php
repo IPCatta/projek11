@@ -36,8 +36,9 @@
         <input type="checkbox" name="hobi[]" value="Musik">Musik <br>
         <input type="checkbox" name="hobi[]" value="Traveling">Traveling
         <br><br>
-        Email : <input type="email" name="email" required><br><br>
-        <input type="Password" name="Password" required>
+        Email    : <input type="email" name="email" required><br><br>
+        password :<input type="Password" name="Password" required>
+        <br><br>
         <input type="submit" value="Simpan"> 
     </form>
 </body>
