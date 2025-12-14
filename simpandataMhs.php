@@ -24,17 +24,37 @@ if(empty($xraw_password) || strlen($xraw_password) <10) {
 }
 
 $hashed_password = password_hash($xraw_password, PASSWORD_BCRYPT);
-$sql1 = "INSERT INTO data_mhs (nim, nama, tempat_lahir, tanggalLahir, jmlsaudara, alamat, kota, jenisKelamin
-                     , statusKeluarga, hobi, email, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-$stmt1 = $koneksi->prepare($sql1);
-$stmt1->bind_param("ssssssssssss", $xnim, $xnama, $xtempatlahir, $xtanggalLahir, $xjmlsaudara, $xalamat, $xkota, $xjk 
-                            ,$xstatusKeluarga, $xhobi, $xemail, $hashed_password);
-if($stmt1->execute()) {
-    echo "Data berhasil disimpan! <br>";
-    echo "<a href='tampilDataMhs.php'>Lihat Data</a>";
-} else {
-    echo "error: " . mysqli_error($koneksi);
-}
-$koneksi->close();
-$stmt1->close();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Simpan Data</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <?php
+        $sql1 = "INSERT INTO data_mhs (nim, nama, tempat_lahir, tanggalLahir, jmlsaudara, alamat, kota, jenisKelamin
+                         , statusKeluarga, hobi, email, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt1 = $koneksi->prepare($sql1);
+        $stmt1->bind_param("ssssssssssss", $xnim, $xnama, $xtempatlahir, $xtanggalLahir, $xjmlsaudara, $xalamat, $xkota, $xjk 
+                                ,$xstatusKeluarga, $xhobi, $xemail, $hashed_password);
+        if($stmt1->execute()) {
+            echo '<div class="success">';
+            echo "<strong>✓ Berhasil!</strong> Data berhasil disimpan!";
+            echo '</div>';
+            echo "<a href='tampilDataMhs.php'>Lihat Data</a>";
+        } else {
+            echo '<div class="error">';
+            echo "<strong>✗ Error:</strong> " . mysqli_error($koneksi);
+            echo '</div>';
+            echo "<a href='tambahDataMhs.php'>Kembali</a>";
+        }
+        $koneksi->close();
+        $stmt1->close();
+        ?>
+    </div>
+</body>
+</html>

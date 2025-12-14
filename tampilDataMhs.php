@@ -6,13 +6,15 @@ $data = mysqli_query($koneksi, "SELECT * FROM mhs ORDER BY nim DESC");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Daftar Data Mahasiswa</h2>
-    <a href="tambahDataMhs.php">Tambah Data Baru</a>
-    <br><br>
-    <table border="1" cellpadding="8">
+    <div class="container">
+        <h2>Daftar Data Mahasiswa</h2>
+        <a href="tambahDataMhs.php">Tambah Data Baru</a>
+        <table>
         <tr>
             <th>ID</th>
             <th>NIM</th>
@@ -44,7 +46,11 @@ $data = mysqli_query($koneksi, "SELECT * FROM mhs ORDER BY nim DESC");
                 <td><?=$row['hobi'] ?></td>
                 <td><?=$row['email'] ?></td>
                 <td><?=$row['pass'] ?></td>
-        </tr>
-    <?php
-    endwhile;
-    ?>
+            </tr>
+        <?php
+        endwhile;
+        ?>
+        </table>
+    </div>
+</body>
+</html>
